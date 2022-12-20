@@ -10,7 +10,7 @@ pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-disqusShortname = "yourdiscussshortname"
+disqusShortname = "sdeleuze"
 
 [params]
   author = "Sébastien Deleuze"
@@ -68,3 +68,8 @@ disqusShortname = "yourdiscussshortname"
   url = "index.xml"
   rel = "alternate"
   type = "application/rss+xml"
+
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
