@@ -61,3 +61,10 @@ disqusShortname = "yourdiscussshortname"
   icon = "fa fa-linkedin fa-2x"
   weight = 3
   url = "https://www.linkedin.com/in/deleuze"
+[[params.social]]
+  name = "RSS"
+  icon = "fa fa-2x fa-rss"
+  weight = 6
+  url = "index.xml"
+  rel = "alternate"
+  type = "application/rss+xml"
