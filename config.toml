@@ -14,7 +14,7 @@ disqusShortname = "yourdiscussshortname"
 
 [params]
   author = "Sébastien Deleuze"
-  info = "Spring Framework core committer, WebAssembly believer since 2016."
+  info = "Spring Framework core committer, WebAssembly believer since 2016, Kotlin Google Developer Expert."
   description = "Sébastien Deleuze's personal website"
   keywords = "blog,developer,personal"
   avatarurl = "images/profil.jpg"
