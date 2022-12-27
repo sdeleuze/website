@@ -68,3 +68,17 @@ disqusShortname = "sdeleuze"
 [permalinks]
   posts = "/:filename/"
 
+[[menu.main]]
+name = "Posts"
+weight = 1
+url  = "posts/"
+
+[[menu.main]]
+name = "Presentations"
+weight = 2
+url  = "presentations/"
+
+[[menu.main]]
+name = "Podcasts"
+weight = 3
+url  = "podcasts/"
