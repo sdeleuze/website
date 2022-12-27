@@ -1,11 +1,12 @@
 +++
 author = "Sébastien Deleuze"
-title = "How WebAssembly could impact the future of programming languages"
+title = "WebAssembly impact on programming languages"
 date = "2022-12-20"
-description = "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
 tags = [
-    "tech",
     "webassembly"
+]
+aliases = [
+    "/posts/webassembly-impact-on-programming-languages/"
 ]
 +++
 

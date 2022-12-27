@@ -19,9 +19,6 @@ disqusShortname = "sdeleuze"
   keywords = "blog,developer,personal"
   avatarurl = "images/profil.jpg"
 
-  favicon_32 = "/img/favicon-32x32.png"
-  favicon_16 = "/img/favicon-16x16.png"
-
   since = 2022
 
   enableTwemoji = true
@@ -33,11 +30,10 @@ disqusShortname = "sdeleuze"
   customSCSS = []
   customJS = []
 
+  mainSections = [ "posts" ]
+
 [taxonomies]
-  category = "categories"
-  series = "series"
   tag = "tags"
-  author = "authors"
 
 # Social links
 [[params.social]]
@@ -69,7 +65,6 @@ disqusShortname = "sdeleuze"
   rel = "alternate"
   type = "application/rss+xml"
 
-[[menu.main]]
-  name = "Blog"
-  weight = 1
-  url  = "posts/"
+[permalinks]
+  posts = "/:filename/"
+
