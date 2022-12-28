@@ -10,8 +10,6 @@ pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-disqusShortname = "sdeleuze"
-
 [params]
   author = "Sébastien Deleuze"
   info = "Spring Framework core committer, WebAssembly believer since 2016, Kotlin Google Developer Expert."
