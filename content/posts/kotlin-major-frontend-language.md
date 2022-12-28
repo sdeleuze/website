@@ -2,10 +2,7 @@
 author = "Sébastien Deleuze"
 title = "My call for Kotlin as a major frontend language"
 date = "2018-10-16"
-tags = [
-    "kotlin",
-    "webassembly"
-]
+tags = ["kotlin", "webassembly"]
 +++
 
 I try to push for quite a long time for [first class support for WebAssembly in Kotlin](https://discuss.kotlinlang.org/t/webassembly-support/1722) because I really believe that frontend development is a domain where Kotlin can be as strong as in mobile, and because this is something that would also help to increase even more the adoption on server-side.

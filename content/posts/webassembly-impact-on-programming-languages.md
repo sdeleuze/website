@@ -2,12 +2,8 @@
 author = "Sébastien Deleuze"
 title = "WebAssembly impact on programming languages"
 date = "2022-12-20"
-tags = [
-    "webassembly"
-]
-aliases = [
-    "/posts/webassembly-impact-on-programming-languages/"
-]
+tags = ["webassembly"]
+aliases = ["/posts/webassembly-impact-on-programming-languages/"]
 +++
 
 First some context: WebAssembly Component Model (WIT) is maturing in order to standardize reusable components. When ready, WIT components will likely be published in a repository (like [npm](https://www.npmjs.com/) or [Maven Central](https://search.maven.org/) but for Wasm) in a polyglot fashion targeting any language that supports Wasm.
