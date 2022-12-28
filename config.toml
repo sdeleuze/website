@@ -14,7 +14,7 @@ pygmentscodefencesguesssyntax = true
   author = "Sébastien Deleuze"
   info = "Spring Framework core committer, WebAssembly believer since 2016, Kotlin Google Developer Expert."
   description = "Sébastien Deleuze's personal website"
-  keywords = "blog,developer,personal"
+  keywords = "blog,developer,spring,kotlin,webassembly"
   avatarurl = "images/profil.jpg"
 
   since = 2022
