@@ -17,7 +17,6 @@ pygmentscodefencesguesssyntax = true
   keywords = "blog,developer,spring,kotlin,webassembly"
   avatarurl = "images/profil.jpg"
   license = "Licensed Under Creative Commons <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\">BY-SA 4.0</a>"
-
   since = 2022
 
   enableTwemoji = true
