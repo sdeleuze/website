@@ -61,7 +61,7 @@ You can vote for [KT-56605](https://youtrack.jetbrains.com/issue/KT-56605) if yo
 
 ## WebAssembly package management with warg
 
-You may wonder how WebAssembly components will be published and consumed. An emerging response has been shared recently in [this great talk](https://www.youtube.com/watch?v=lihQEVhOR58) by Bailey Hayes and Kyle Brown. Warg is an ongoing effort to standardize WebAssembly package management, and various instances of WebAssembly package repositories will likely be available. I am not sure what amount of decentralization there will be, but the biggest public instances like the upcoming [Bytecode Alliance](https://bytecodealliance.org/) one will potentially look a bit like Maven Central for the JVM world or NPM for the JavaScript world.
+You may wonder how WebAssembly components will be published and consumed. An emerging response has been shared recently in [this great talk](https://www.youtube.com/watch?v=yjPRcGCwaTI) by Kyle Brown. Warg is an ongoing effort to standardize WebAssembly package management, and various instances of WebAssembly package repositories will likely be available. I am not sure what amount of decentralization there will be, but the biggest public instances like the upcoming [Bytecode Alliance](https://bytecodealliance.org/) one will potentially look a bit like Maven Central for the JVM world or NPM for the JavaScript world.
 
 A key point is that those WebAssembly package repositories will be polyglot places. You may argue that Maven Central or NPM are used by other languages than Java and JavaScript, but in practice other languages remain in the shadow of the platform language both on producer and consumer side. Warg and WebAssembly are going to bring polyglot components to the next level.
 
