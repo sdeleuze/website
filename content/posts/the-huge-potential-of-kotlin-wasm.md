@@ -88,7 +88,8 @@ An updated WASI roadmap has been recently shared by Dan Gohman:
 - Preview2: Rebase WASI on Wit (we are here)
 - Preview3: Level up Async: future and stream
 - WASI 1.0: Standardization
-  If you want to dig more into WASI, I highly recommend [Dan's Youtube channel](https://www.youtube.com/@sunfishcode/streams).
+
+If you want to dig more into WASI, I highly recommend [Dan's Youtube channel](https://www.youtube.com/@sunfishcode/streams).
 
 ## Follow up
 
