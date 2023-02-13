@@ -81,7 +81,7 @@ Interestingly, it is possible to leverage [Kotlin multiplatform](https://kotlinl
 
 The potential of Kotlin/Wasm + WASI is huge. It could provide an alternative to Kotlin/JVM for deploying applications to the Cloud, the Edge or even Serverless functions. It is increasingly used as an alternative to container images, with nano-second instantiation time, increased security and flexible deployment not tide to a specific hardware or OS. That will for sure remind to some of you "Write once, run anywhere" (WORA) the Java slogan from 1995. If you want to dig deeper into the differences between Java and WebAssembly, you can read the excellent blog post [WebAssembly for the Java geek](https://www.javaadvent.com/2022/12/webassembly-for-the-java-geek.html) written by Edoardo Vacchi.
 
-The main blocker to realize that vision is the lack of support of WasmGC in pure WASI runtimes like Wasmtime, see [wasmtime#5032](https://github.com/bytecodealliance/wasmtime/issues/5032) related issue. For now, the main path to run Kotlin/Wasm WASI application is to leverage [Node WASI support](https://nodejs.org/api/wasi.html).
+The main blocker to realize that vision is the lack of support for WasmGC in pure WASI runtimes like Wasmtime, see [wasmtime#5032](https://github.com/bytecodealliance/wasmtime/issues/5032) related issue. For now, the main path to run Kotlin/Wasm WASI application is to leverage [Node WASI support](https://nodejs.org/api/wasi.html).
 
 An updated WASI roadmap has been recently shared by Dan Gohman:
 - Preview1: Support existing users, portability
