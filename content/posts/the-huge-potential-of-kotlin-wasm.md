@@ -27,7 +27,7 @@ While I have never been super convinced by Kotlin/JS which requires the develope
 
 For now, Kotlin/Wasm provides DOM API, and we will maybe see some Kotlin/Wasm frontend frameworks making it a suitable option for frontend development. I will likely explore how Kotlin/Wasm can be used for frontend combined with a Spring Boot Kotlin/JVM backend to perform full stack development in Kotlin.
 
-But WebAssembly becomes even more interesting when you take another perspective. What if [Compose for Web](https://github.com/JetBrains/compose-jb), the multiplatform incarnation of Jetpack Compose used on Android, would leverage Kotlin/Wasm instead of Kotlin/JS to perform pixel-perfect Canvas based rendering?
+But WebAssembly becomes even more interesting when you take another perspective. What if [Compose for Web](https://github.com/JetBrains/compose-jb), the multiplatform incarnation of Jetpack Compose used on Android, would leverage Kotlin/Wasm instead of Kotlin/JS to perform pixel-perfect Canvas based rendering? (spoiler: [it already does](https://twitter.com/bashorov/status/1625437131706363904))
 
 What if Kotlin/Wasm could power a new kind of [Jamstack architecture](https://jamstack.org/) that would use WebAssembly instead of JavaScript (see [Kobweb](https://github.com/varabyte/kobweb) currently based on Kotlin/JS for a glimpse of what I mean)?
 
