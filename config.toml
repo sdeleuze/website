@@ -31,6 +31,9 @@ disqusShortname = "sdeleuze"
 
   mainSections = [ "posts" ]
 
+[params.goatCounter]
+  code = "sdeleuze"
+
 [taxonomies]
   tag = "tags"
 
