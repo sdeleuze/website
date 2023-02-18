@@ -9,8 +9,6 @@ paginate = 20
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-disqusShortname = "sdeleuze"
-
 [params]
   author = "Sébastien Deleuze"
   info = "Spring Framework core committer, WebAssembly believer since 2016, Kotlin and ex Dart Google Developer Expert."
