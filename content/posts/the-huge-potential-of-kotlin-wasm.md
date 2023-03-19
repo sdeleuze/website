@@ -7,7 +7,7 @@ tags = ["kotlin", "webassembly"]
 
 Last week, a preview release of Kotlin/Wasm was announced as part of [Kotlin 1.8.20-Beta](https://kotl.in/1-8-20-Beta#new-kotlin-wasm-target). For me who has been nudging the Kotlin team to work on WebAssembly support [since June 2016](https://discuss.kotlinlang.org/t/webassembly-support/1722), that's a huge step forward even if providing WebAssembly first class support for Kotlin will be a long journey.
 
-I also decided recently to contribute actively by creating [KoWasm](https://github.com/sdeleuze/kowasm), an experimental side project intended to provide WebAssembly Component Model and WASI support for Kotlin/Wasm, with the goal to see those features later supported out of the box.
+I also decided recently to contribute actively by creating [KoWasm](https://github.com/kowasm/kowasm), an experimental side project intended to provide WebAssembly Component Model and WASI support for Kotlin/Wasm, with the goal to see those features later supported out of the box.
 
 ![Kotlin and WebAssembly logos](/images/kotlin-webassembly.png)
 
