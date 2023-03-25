@@ -81,7 +81,7 @@ We start from `kotlin.Any`, it's the base type for everything in Kotlin. Like `j
 
 ![](/images/wasmio23/slide13.png)
 
-But actually from a Wasm point-of-view, it’s structured with 4 fields, so every instance of `Any` has these 4 fields. \
+But actually from a Wasm point-of-view, it’s structured with 4 fields, so every instance of `Any` has these 4 fields.
 
 Vtable field refers on vtable structure for the specific class, now it’s Any’s vtable. All instances of `Any` shares one instance of the vtable structure with references to the specific function implementations. Virtual table used for dispatch virtual calls.
 
@@ -110,7 +110,7 @@ Here is a comparison of different calls. It gives a good sense of the cost of ca
 
 ![](/images/wasmio23/slide20.png)
 
-Let’s move to string internals. Most real-world applications work with strings a lot. So string implementation may have a big influence on the performance and memory usage of an application. At the start, we had a simple naive implementation which is just a wrapper over an array of chars. And it’s good both in terms of memory footprint and performance, except for concatenation. It’s a popular operation over strings. Doing concatenation over default strings, especially in hot paths, is considered bad practice in many languages, and those languages have special types for such cases, like StringBuilder in Kotlin. Anyway, writing a concatenation is much simpler, and it’s easy to underestimate the hotness of code.
+Let’s move to string internals. Most real-world applications work with strings a lot. So string implementation may have a big influence on the performance and memory usage of an application. At the start, we had a simple naive implementation which is just a wrapper over an array of chars. And it’s good both in terms of memory footprint and performance, except for concatenation. It’s a popular operation over strings. Doing concatenation over default strings, especially in hot paths, is considered bad practice in many languages, and those languages have special types for such cases, like `StringBuilder` in Kotlin. Anyway, writing a concatenation is much simpler, and it’s easy to underestimate the hotness of code.
 
 ![](/images/wasmio23/slide21.png)
 
