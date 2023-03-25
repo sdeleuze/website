@@ -149,7 +149,7 @@ Even more, you will soon be able to debug it over Kotlin sources, inspect local 
 
 **Sébastien** Thanks Zalim!
 
-Kotlin/Wasm targets for now mostly web browsers, but I think it has a huge potential for other kinds of workloads. So earlier this year, I took the decision to create a new side project to explore this in collaboration with the Kotlin/Wasm team. That’s also for me a fun way to grow my expertise on what could be possible with WebAssembly, Java and Spring. So today, I am pleased to introduce KoWasm.
+Kotlin/Wasm targets for now mostly web browsers, but I think it has a huge potential for other kinds of workloads. So earlier this year, I took the decision to create a new side project to explore this in collaboration with the Kotlin/Wasm team. That’s also for me a fun way to grow my expertise on what could be possible with WebAssembly, Java and Spring. So today, I am pleased to introduce [KoWasm](https://kowasm.org).
 
 ![](/images/wasmio23/slide29.png)
 
