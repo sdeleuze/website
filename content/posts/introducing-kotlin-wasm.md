@@ -5,7 +5,7 @@ date = "2023-03-25"
 tags = ["kotlin", "webassembly"]
 +++
 
-This blog post is a refined transcription of the presentation Zalim Bashorov and I gave at [Wasm I/O](https://wasmio.tech/) 2023 to introduce Kotlin/Wasm. I will later add a video to the recording when available.
+This blog post is a refined transcription of the presentation Zalim Bashorov and I gave at [Wasm I/O](https://wasmio.tech/) 2023 to introduce Kotlin/Wasm. I will later add a video of the recording when available.
 
 ![](/images/wasmio23/slide1.png)
 
