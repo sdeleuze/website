@@ -16,15 +16,15 @@ This blog post is a refined transcription of the presentation Zalim Bashorov and
 
 ![](/images/wasmio23/slide2.png)
 
-Let’s begin by a quick presentation of the language. Kotlin is a modern statically-typed and garbage-collected language. It manages to be both concise and expressive, has a pragmatic mindset while remaining elegant, and has found in my opinion the right balance between imperative and functional programming. One of its key features is that it turns the billion dollar mistake (null references) to build-time null-safety to check the presence of a value.
+Let’s begin with a quick presentation of the language. Kotlin is a modern statically-typed and garbage-collected language. It manages to be both concise and expressive, has a pragmatic mindset while remaining elegant, and has found, in my opinion, the right balance between imperative and functional programming. One of its key features is that it turns the billion-dollar mistake (null references) into build-time null-safety to check the presence of a value.
 
 ![](/images/wasmio23/slide3.png)
 
-The widest adoption of Kotlin is on mobile, since Google has chosen Kotlin as the official language for Android. On the server-side, Java remains the leader but Kotlin has a significant market share, and a lot of Spring developers are using Kotlin to develop their Spring Boot applications. Thanks to its DSL and scripting capabilities, Kotlin has also been chosen as the language used to describe Gradle builds.
+The widest adoption of Kotlin is on mobile, since Google has chosen Kotlin as the official language for Android. On the server-side, Java remains the leader, but Kotlin has a significant market share, and a lot of Spring developers are using Kotlin to develop their Spring Boot applications. Thanks to its DSL and scripting capabilities, Kotlin has also been chosen as the language used to describe Gradle builds.
 
 ![](/images/wasmio23/slide4.png)
 
-Even if most successful use-cases are targeting the JVM, Kotlin has dedicated support for developing multiplatform projects. You write common code that will be shared, then add the required specific bits for the platform(s) you target (JVM, JavaScript, Native). Its tooling is mostly JVM based. Kotlin provides a compiler plugin mechanism capable of powerful build-time transformations.
+Even if the most successful use-cases are targeting the JVM, Kotlin has dedicated support for developing multiplatform projects. You write common code that will be shared, then add the required specific bits for the platform(s) you target (JVM, JavaScript, Native). Its tooling is mostly JVM based. Kotlin provides a compiler plugin mechanism capable of powerful build-time transformations.
 
 ![](/images/wasmio23/slide5.png)
 
@@ -45,7 +45,7 @@ Zalim, can you share more about this shiny new Kotlin to Wasm compiler?
 
 **Zalim** Sure! Thanks Seb!
 
-We built the new compiler from scratch and targeting the next goals. We wanted to have fast compilation, because we think it’s important to have a sub-second round trip time and to achieve that we generate binaries directly and later going to make it incremental. We don’t do much optimizations during development but use Binaryen to optimize release builds. We also wanted to have small binaries and great integration with hosts, for example to avoid leaks with cross module links. And modern shiny proposals help us a lot with it.
+We built the new compiler from scratch, and we are targeting the next goals. We wanted to have fast compilation, because we think it’s important to have a sub-second round trip time and to achieve that we generate binaries directly and later going to make it incremental. We don’t do many optimizations during development but use Binaryen to optimize release builds. We also wanted to have small binaries and great integration with hosts, for example, to avoid leaks with cross-module links. And modern shiny proposals help us a lot with it.
 
 ![](/images/wasmio23/slide9.png)
 
@@ -65,11 +65,11 @@ We have great news to share!  Origin trial for WasmGC in Chrome is open for regi
 
 ![](/images/wasmio23/slide11.png)
 
-WebAssembly evolves continuously, and there are many new proposals. Some of them are interesting to us, and even more, we are experimenting with some of them. Let’s quickly look at them. There are many proposals aimed to improve **interop** with the external world. **Performance** is important as well. You can say nowadays disk space is cheap, and networks are fast, but there are use cases where **size** is still important, for example the web.
+WebAssembly evolves continuously, and there are many new proposals. Some of them are interesting to us, and even more, we are experimenting with some of them. Let’s quickly look at them. There are many proposals aimed to improve **interop** with the external world. **Performance** is important as well. You can say nowadays disk space is cheap, and networks are fast, but there are use cases where **size** is still important, for example, the web.
 
 I’d like to highlight a few proposals:
 
-* First **Component Model** because I personally think it’s important for the whole wasm ecosystem.
+* First, **Component Model** because I personally think it’s important for the whole wasm ecosystem.
 * Next, **Multiple Memory** – because it can unblock some interop cases, for example, between different languages.
 * And, **stringref** proposal – I’ll explain it a bit later.
 
@@ -87,14 +87,14 @@ But actually from a Wasm point-of-view, it’s structured with 4 fields, so ever
 
 ![](/images/wasmio23/slide14.png)
 
-Let’s introduce another class `Foo` extending `Any` with one more field. In Wasm we extend `Any` structure, repeat the fields from Any, and introduce the new one. We also want to change some methods and add a new one. To achieve that, we introduce a new virtual table and change the type of original vtable field to a more specific one to avoid casts while accessing the new vtable field. In the new vtable, we change the reference for `toString` and introduce a new field `bar` for the new method.
+Let’s introduce another class `Foo` extending `Any` with one more field. In wasm, we extend `Any` structure, repeat the fields from Any, and introduce the new one. We also want to change some methods and add a new one. To achieve that, we introduce a new virtual table and change the type of the original `vtable` field to a more specific one to avoid casts while accessing the new vtable field. In the new vtable, we change the reference for `toString` and introduce a new field `bar` for the new method.
 
 ![](/images/wasmio23/slide15.png)
-Ok, how to access fields and call methods? Accessing fields is simple. Say we have a local variable d referencing an instance of `Foo`. We have a stack for values and instructions to execute. First we need to put a reference to the stack using local.get. Then we use struct.get to access the field. It takes the reference from the stack, read the field and put the value to the stack. Easy.
+Ok, how to access fields and call methods? Accessing fields is simple. Say we have a local variable `d` referencing an instance of `Foo`. We have a stack for values and instructions to execute. First, we need to put a reference to the stack using `local.get`. Then we use `struct.get` to access the field. It takes the reference from the stack, reads the field, and puts the value to the stack. Easy!
 
 ![](/images/wasmio23/slide16.png)
 
-To do a virtual call, we need a bit more. We have the same variable d with an instance of `Foo`, and now we want to call the method `bar`. We put d on the stack 2 times. The first is an argument of the method. The second will be used to reach the method. Next, we read vtable field from the instance. Then, read `bar` from vtable. And finally we can call it and see result to the stack.
+To do a virtual call, we need a bit more. We have the same variable `d` with an instance of `Foo`, and now we want to call the method `bar`. We put `d` on the stack 2 times. The first is an argument of the method. The second will be used to reach the method. Next, we read vtable field from the instance. Then, read `bar` from vtable. And finally, we can call it and see a result to the stack.
 
 ![](/images/wasmio23/slide17.png)
 
@@ -102,7 +102,7 @@ For comparison, a static call of function we know at compile time requires only 
 
 ![](/images/wasmio23/slide18.png)
 
-Kotlin also has the concept of interfaces, and it’s much trickier. Let’s say, the same class `Foo`, is implementing interfaces Timer, Logger, and maybe something else. So, we introduce a new structure ITables_1 with fields for each implemented interface. For each interface, we have a separate structure similar to vtables with references to actual implementations. Calling interface methods is similar to virtual ones, but needs slightly more instructions.
+Kotlin also has the concept of interfaces, and it’s much trickier. Let’s say, the same class `Foo`, is implementing interfaces `Timer`, `Logger`, and maybe something else. So, we introduce a new structure `ITables_1` with fields for each implemented interface. For each interface, we have a separate structure similar to vtables with references to actual implementations. Calling an interface method is similar to virtual one, but needs slightly more instructions.
 
 ![](/images/wasmio23/slide19.png)
 
@@ -114,7 +114,7 @@ Let’s move to string internals. Most real-world applications work with strings
 
 ![](/images/wasmio23/slide21.png)
 
-So, to optimize this use case, we changed the String representation by adding optional references to the prefix and length. Assume we have two strings WASM and IO. If we concatenate them we will get an object referencing the left string and share the array with the right one. It could be chained like this, until we fold it. It’s folded on demand on all other operations Now it’s good on concatenations. In the future, we can consider improving builtin String for over cases but there is a better option.
+So, to optimize this use case, we changed the String representation by adding optional references to the prefix and length. Assume we have two strings WASM and IO. If we concatenate them, we will get an object referencing the left string and share the array with the right one. It could be chained like this, until we fold it. It’s folded on demand on all other operations Now it’s good on concatenations. In the future, we can consider improving builtin String for over cases, but there is a better option.
 
 ![](/images/wasmio23/slide22.png)
 
@@ -167,17 +167,17 @@ Given WebAssembly “share nothing” approach, WebAssembly components will IMO 
 
 KoWasm provides and documents on [https://kowasm.org/api/](https://kowasm.org/api/) APIs designed to allow building server-side applications.
 
-The WASI module for now leverages the low level WASI Preview1 ABI and exposes it with a Kotlin API inspired from the higher-level WASI Preview2 API. Later the goal would be to have WASI supported directly in Kotlin/Wasm.
+The WASI module, for now, leverages the low-level WASI Preview1 ABI and exposes it with a Kotlin API inspired from the higher-level WASI Preview2 API. Later the goal would be to have WASI supported directly in Kotlin/Wasm.
 
 KoWasm also exposes a web server API that allows to define HTTP routes and handlers in functional style. A lightweight HTTP client usable on frontend or backend will likely be included as well.
 
 ![](/images/wasmio23/slide32.png)
 
-If we have a deeper look to the WASI module, it is implemented by using a memory allocator API provided by Kotlin Wasm. It allows to make a bridge between WasmGC and the linear memory, and also leverages Kotlin/Wasm capability to import Wasm functions.
+If we have a deeper look at the WASI module, it is implemented by using a memory allocator API provided by Kotlin Wasm. It allows making a bridge between WasmGC and the linear memory, and also leverages Kotlin/Wasm capability to import Wasm functions.
 
 {{< youtube SQRJWriPc2s >}}
 
-Let see a demo of what it looks like to create a server-side application with KoWasm.
+Let's see a demo of what it looks like to create a server-side application with KoWasm.
 
 So basically you create a Kotlin multiplatform project, indicate that it targets Wasm, and declare a few dependencies on KoWasm and some Kotlin multiplatform libraries. We can then see our domain model illustrated here by the User data class, with related validation logic created with the [Konform](https://github.com/konform-kt/konform) multiplatform library. Such logic can be shared between the frontend and the backend. We also have a “fake” UserService class that exposes findAll and findOne functions.
 
@@ -190,7 +190,7 @@ We then compile it via Gradle and Kotlin/Wasm compiler to a couple of Wasm and J
 
 For now, we deploy KoWasm applications to Node.js because we need a runtime that supports both WASI and WasmGC. But as soon as WebAssembly runtimes like Wasmtime or WasmEdge start to support the garbage collection proposal, we will be able to target those runtimes, and implement HTTP support purely using WASI, no JavaScript or Node.js API involved. Deployment could target Docker via its Wasm support, Kubernetes, Cloud or Edge platforms.
 
-The key point here in terms of efficiency, security and flexibility, is that we will be able to deploy directly a Wasm file that leverages WASI instead of a container and its operating system layer.
+The key point here in terms of efficiency, security, and flexibility, is that we will be able to deploy directly a Wasm file that leverages WASI instead of a container and its operating system layer.
 
 Combined with capability-based security and micro-seconds instantiation time, it is going to be, in my opinion, a game changer for server-side workloads.
 
@@ -214,14 +214,14 @@ Let’s now talk about the frontend. Compose for Web provides in a nutshell 2 wa
 * Canvas-based pixel-perfect rendering
 * HTML with DOM based rendering
 
-While the first one is ok for let’s say build backoffices, for public websites, I tend to think we should keep using HTML lightweight rendering. Compose for Web allows to target the DOM to build reactive interfaces as shown in the code sample above.
+While the first one is ok for let’s say build backoffices, for public websites, I tend to think we should keep using HTML lightweight rendering. Compose for Web allows targeting the DOM to build reactive interfaces as shown in the code sample above.
 
 ![](/images/wasmio23/slide39.png)
 
 
 This is, for now, just an idea, but my bet is that it could be possible to evolve Compose for Web, which is currently designed as a frontend framework, to a full-stack one. I would even say to a server-side first one.
 
-In a sense, it would be Kotlin/Wasm reinterpretation of modern [Jamstack](https://jamstack.org/) solutions we see in the JavaScript world, providing a unified backend + frontend web framework.
+In a sense, it would be a Kotlin/Wasm reinterpretation of modern [Jamstack](https://jamstack.org/) solutions we see in the JavaScript world, providing a unified backend + frontend web framework.
 
 The principle would be to use Compose for Web API as a server-side templating system, and to extract via a Kotlin Compiler plugin the listeners and related reactive state management code
 
@@ -235,7 +235,7 @@ The general availability of WasmGC in browsers should happen soon and is going t
 
 Kotlin/Wasm is going to reduce its footprint via various optimizations. Compose is probably going to be one of the first major libraries taking advantage of Kotlin/Wasm. Kotlin/Wasm is likely going to target standalone runtimes like Wasmtime and WasmEdge, and is going to mature from experimental to alpha status.
 
-On the KoWasm side, 0.1 release is expected around May. More work will happen on component model and leveraging WASI Preview2+. And I would explore server-side rendering with Compose in collaboration with the JetBrains team and [KobWeb](https://github.com/varabyte/kobweb) project lead David Herman.
+On the KoWasm side, 0.1 release is expected around May. More work will happen on the component model and leveraging WASI Preview2+. And I would explore server-side rendering with Compose in collaboration with the JetBrains team and [KobWeb](https://github.com/varabyte/kobweb) project lead David Herman.
 
 ![](/images/wasmio23/slide41.png)
 
