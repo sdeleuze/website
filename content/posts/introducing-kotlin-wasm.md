@@ -32,7 +32,7 @@ Let me share a story with you. Since I work in this industry, I have always trie
 
 ![](/images/wasmio23/slide6.png)
 
-After an initial WebAssembly support prototype in Kotlin/Native leveraging the LLVM toolchain, the Kotlin team chose to introduce dedicated support for WebAssembly by targeting WasmGC in a brand new dedicated compiler. Kotlin/Wasm was born and reached experimental status early 2023, a few weeks ago.
+After an initial WebAssembly support prototype in Kotlin/Native leveraging the LLVM toolchain, the Kotlin team chose to introduce dedicated support for WebAssembly by targeting WasmGC in a brand new dedicated compiler. Kotlin/Wasm reached [experimental status](https://kotlinlang.org/docs/components-stability.html#stability-levels-explained) in early 2023, a few weeks ago.
 
 ![](/images/wasmio23/slide7.png)
 
@@ -83,11 +83,11 @@ We start from `kotlin.Any`, it's the base type for everything in Kotlin. Like `j
 
 But actually from a Wasm point-of-view, it’s structured with 4 fields, so every instance of `Any` has these 4 fields.
 
-Vtable field refers on vtable structure for the specific class, now it’s Any’s vtable. All instances of `Any` shares one instance of the vtable structure with references to the specific function implementations. Virtual table used for dispatch virtual calls.
+`vtable` field refers on a vtable structure for the specific class, now it’s Any’s vtable. All instances of `Any` shares one instance of the vtable structure with references to the specific function implementations. Virtual table used for dispatch virtual calls.
 
 ![](/images/wasmio23/slide14.png)
 
-Let’s introduce another class `Foo` extending `Any` with one more field. In Wasm we extend `Any` structure, repeat the fields from Any, and introduce the new one. We also want to change some methods and add a new one. To achieve that, we introduce a new virtual table and change the type of original vtable field to a more specific one to avoid casts while accessing the new vtable field. In the new vtable, we change the reference for toString and introduce a new field `bar` for the new method.
+Let’s introduce another class `Foo` extending `Any` with one more field. In Wasm we extend `Any` structure, repeat the fields from Any, and introduce the new one. We also want to change some methods and add a new one. To achieve that, we introduce a new virtual table and change the type of original vtable field to a more specific one to avoid casts while accessing the new vtable field. In the new vtable, we change the reference for `toString` and introduce a new field `bar` for the new method.
 
 ![](/images/wasmio23/slide15.png)
 Ok, how to access fields and call methods? Accessing fields is simple. Say we have a local variable d referencing an instance of `Foo`. We have a stack for values and instructions to execute. First we need to put a reference to the stack using local.get. Then we use struct.get to access the field. It takes the reference from the stack, read the field and put the value to the stack. Easy.
@@ -114,11 +114,11 @@ Let’s move to string internals. Most real-world applications work with strings
 
 ![](/images/wasmio23/slide21.png)
 
-So, to optimize this use case we, changed the String representation by adding optional references to the prefix and length. Assume we have two strings WASM and IO. If we concatenate them we will get an object referencing the left string and share the array with the right one. It could be chained like this, until we fold it. It’s folded on demand on all other operations Now it’s good on concatenations. In the future, we can consider improving builtin String for over cases but there is a better option.
+So, to optimize this use case, we changed the String representation by adding optional references to the prefix and length. Assume we have two strings WASM and IO. If we concatenate them we will get an object referencing the left string and share the array with the right one. It could be chained like this, until we fold it. It’s folded on demand on all other operations Now it’s good on concatenations. In the future, we can consider improving builtin String for over cases but there is a better option.
 
 ![](/images/wasmio23/slide22.png)
 
-This beter option is the **stringref proposal.**
+This better option is the **stringref proposal.**
 
 The preliminary results of our experiments are promising:
 
@@ -131,15 +131,15 @@ Let’s move out and look at what is already possible to do with Kotlin/Wasm and
 
 ![](/images/wasmio23/slide24.png)
 
-Some time ago, a team in JetBrains took it and made it multiplatform
+Some time ago, a team at JetBrains took it and made it multiplatform
 
 ![](/images/wasmio23/slide25.png)
 
-So now, you can write multiplatform application and use Compose for UIs by writing code like this slide.
+So now, you can write multiplatform application and use Compose for UI by writing code like on this slide.
 
 {{< youtube m6FlSWFlhzw >}}
 
-And it now works with Kotlin/Wasm! Check it out! It’s a demo originally built for desktop but run inside the browser, you can follow [this link](http://zal.im/wasmio/) and play with the live demo. It requires enabling WebAssembly GC support (for example by going to `chrome://flags/#enable-webassembly-garbage-collection` in Chrome) and works in Chrome and Firefox latest stable versions.
+And it now works with Kotlin/Wasm! Check it out! It’s a demo originally built for desktop but run inside the browser, you can follow [this link](http://zal.im/wasmio/) and play with the live demo. It works in Chrome and Firefox latest stable versions, but may require enabling WebAssembly GC support.
 
 ![](/images/wasmio23/slide27.png)
 
@@ -149,17 +149,17 @@ Even more, you will soon be able to debug it over Kotlin sources, inspect local 
 
 **Sébastien** Thanks Zalim!
 
-Kotlin/Wasm targets for now mostly web browsers, but I think it has a huge potential for other kinds of workloads. So earlier this year, I took the decision to create a new side project to explore this in collaboration with the Kotlin/Wasm team. That’s also for me a fun way to grow my expertise on what could be possible with WebAssembly, Java and Spring. So today, I am pleased to introduce [KoWasm](https://kowasm.org).
+Kotlin/Wasm, for now, mostly targets web browsers, but I think it has a huge potential for other kinds of workloads. So earlier this year, I took the decision to create a new side project to explore this in collaboration with the Kotlin/Wasm team. That’s also for me a fun way to grow my expertise on what could be possible with WebAssembly, Java and Spring. So today, I am pleased to introduce [KoWasm](https://kowasm.org).
 
 ![](/images/wasmio23/slide29.png)
 
-KoWasm's goal is to explore server-side and full stack development with Kotlin and WebAssembly. It leverages WASI to access system resources and WebAssembly Component Model for the interoperability.
+KoWasm's goal is to explore server-side and full stack development with Kotlin and WebAssembly. It leverages [WASI](https://wasi.dev) to access system resources and [WebAssembly Component Model](https://github.com/WebAssembly/component-model) for the interoperability.
 
 ![](/images/wasmio23/slide30.png)
 
 The vision behind KoWasm is not limited to Kotlin, and is an opinionated anticipation of what could be the WebAssembly ecosystem in the future.
 
-I tend to think that once WasmGC will be available in browsers and pure WebAssembly runtimes, we will gradually see more and more applications written with languages targeting WasmGC like Kotlin, Dart or Java.  WebAssembly could be used to deploy workloads everywhere: browser, cloud, edge with business logic easily shared.
+I tend to think that once WasmGC is available in browsers and standalone WebAssembly runtimes, we will gradually see more and more applications written with languages targeting WasmGC like Kotlin, Dart, or Java. WebAssembly could be used to deploy workloads everywhere: browser, cloud, edge with business logic easily shared.
 
 Given WebAssembly “share nothing” approach, WebAssembly components will IMO mostly be implemented with languages closer to the metal, with no or very little runtime, like Rust, Zig, C and C++. Those components would be exposed via warg repositories, a bit like NPM for JavaScript or Maven Central for the JVM, but in a more decentralized fashion.
 
@@ -192,13 +192,13 @@ For now, we deploy KoWasm applications to Node.js because we need a runtime that
 
 The key point here in terms of efficiency, security and flexibility, is that we will be able to deploy directly a Wasm file that leverages WASI instead of a container and its operating system layer.
 
-Combined with capability-based security and micro-seconds instantiation time, it is going to be in my opinion a game changer for server-side workloads.
+Combined with capability-based security and micro-seconds instantiation time, it is going to be, in my opinion, a game changer for server-side workloads.
 
 ![](/images/wasmio23/slide35.png)
 
 We have begun to think about how WIT, the format powering WebAssembly Component Model, would translate to Kotlin. And it looks like a pretty good match so far.
 
-For example, WIT records can translate conceptually to Kotlin data classes.
+For example, [WIT](https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md) records can translate conceptually to Kotlin data classes.
 
 WIT options translate nicely to Kotlin null-safety, and we can even use parameter default values to provide a better developer experience.
 
@@ -219,7 +219,7 @@ While the first one is ok for let’s say build backoffices, for public websites
 ![](/images/wasmio23/slide39.png)
 
 
-This is for now just an idea, but my bet is that it could be possible to evolve Compose for Web which is currently designed as a frontend framework, to a full stack one. I would even say to a server-side first one.
+This is, for now, just an idea, but my bet is that it could be possible to evolve Compose for Web, which is currently designed as a frontend framework, to a full-stack one. I would even say to a server-side first one.
 
 In a sense, it would be Kotlin/Wasm reinterpretation of modern [Jamstack](https://jamstack.org/) solutions we see in the JavaScript world, providing a unified backend + frontend web framework.
 
@@ -235,7 +235,7 @@ The general availability of WasmGC in browsers should happen soon and is going t
 
 Kotlin/Wasm is going to reduce its footprint via various optimizations. Compose is probably going to be one of the first major libraries taking advantage of Kotlin/Wasm. Kotlin/Wasm is likely going to target standalone runtimes like Wasmtime and WasmEdge, and is going to mature from experimental to alpha status.
 
-On the KoWasm side, 0.1 release is expected around May. More work will happen on component model and leveraging WASI Preview2+. And I would explore server-side rendering with Compose in collaboration with Jetbrains team and [KobWeb](https://github.com/varabyte/kobweb) project lead David Herman.
+On the KoWasm side, 0.1 release is expected around May. More work will happen on component model and leveraging WASI Preview2+. And I would explore server-side rendering with Compose in collaboration with the JetBrains team and [KobWeb](https://github.com/varabyte/kobweb) project lead David Herman.
 
 ![](/images/wasmio23/slide41.png)
 
