@@ -7,6 +7,8 @@ tags = ["kotlin", "webassembly"]
 
 This blog post is a refined transcription of the presentation Zalim Bashorov and I gave at [Wasm I/O](https://wasmio.tech/) 2023 to introduce [Kotlin/Wasm](http://kotl.in/wasm/). I will later add a video of the recording when available.
 
+## Intro
+
 ![](/images/wasmio23/slide1.png)
 
 **Zalim** Hi, everyone! I’m [Zalim](http://twitter.com/bashorov). I’m writing Kotlin in Kotlin at JetBrains and leading Kotlin/Wasm. We are going to have a quick journey around Kotlin/Wasm. We will see what the possibilities there are and also have a look at the inside.
@@ -29,6 +31,8 @@ Even if the most successful use-cases are targeting the JVM, Kotlin has dedicate
 ![](/images/wasmio23/slide5.png)
 
 Let me share a story with you. Since I work in this industry, I have always tried to find solutions to avoid tech silos and to allow sharing code for various usages. So, when I saw the ongoing standardization of WebAssembly in 2016, I immediately thought it would be a great opportunity for Kotlin. I [shared this idea with the Kotlin team and community](https://discuss.kotlinlang.org/t/webassembly-support/1722), and have been dreaming of dedicated support for WebAssembly in Kotlin since.
+
+## Kotlin/Wasm
 
 ![](/images/wasmio23/slide6.png)
 
@@ -72,6 +76,8 @@ I’d like to highlight a few proposals:
 * First, **Component Model** because I personally think it’s important for the whole wasm ecosystem.
 * Next, **Multiple Memory** – because it can unblock some interop cases, for example, between different languages.
 * And, **stringref** proposal – I’ll explain it a bit later.
+
+# Inside Kotlin/Wasm
 
 Let’s take a deeper look at some Kotlin/Wasm implementation details.
 
@@ -125,9 +131,15 @@ The preliminary results of our experiments are promising:
 * 60 times faster on interop microbenchmarks
 * And up to 3 times faster on DBMonster (see benchmark [without stringref](https://zal.im/wasm/dbmonster/) versus[ with stringref](https://zal.im/wasm/dbmonster-stringref/)) which works a lot with the DOM
 
+## Kotlin/Wasm usages
+
+Let’s move out and look at what is already possible to do with Kotlin/Wasm and the exciting related opportunities.
+
+### Compose Multiplatform
+
 ![](/images/wasmio23/slide23.png)
 
-Let’s move out and look at what is already possible to do with Kotlin/Wasm and the exciting related opportunities. It is Jetpack Compose, a declarative UI toolkit in Kotlin, developed by Google for Android
+It is Jetpack Compose, a declarative UI toolkit in Kotlin, developed by Google for Android
 
 ![](/images/wasmio23/slide24.png)
 
@@ -144,6 +156,8 @@ And it now works with Kotlin/Wasm! Check it out! It’s a demo originally built 
 ![](/images/wasmio23/slide27.png)
 
 Even more, you will soon be able to debug it over Kotlin sources, inspect local variables and call stack, etc. Now it’s your turn to show cool things, Seb.
+
+### KoWasm
 
 ![](/images/wasmio23/slide28.png)
 
@@ -227,6 +241,7 @@ The principle would be to use Compose for Web API as a server-side templating sy
 
 to send to the frontend only this limited subset of the infrastructure to resume the HTML rendering done initially on server-side to add the required listeners.
 
+## What’s next?
 ![](/images/wasmio23/slide40.png)
 
 Let’s finish by talking about what’s next.
