@@ -9,7 +9,7 @@ This blog post is a refined transcription of the presentation Zalim Bashorov and
 
 ![](/images/wasmio23/slide1.png)
 
-**Zalim** Hi, everyone! I’m Zalim. I’m writing Kotlin in Kotlin at JetBrains and leading Kotlin/Wasm. We are going to have a quick journey around Kotlin/Wasm, we will see what the possibilities are, and also have a look at the inside.
+**Zalim** Hi, everyone! I’m Zalim. I’m writing Kotlin in Kotlin at JetBrains and leading Kotlin/Wasm. We are going to have a quick journey around Kotlin/Wasm, we will see what the possibilities there are and also have a look at the inside.
 
 **Sébastien** Hey, I am Sébastien Deleuze, I work as a Spring Framework committer at VMware. I led the introduction of Kotlin and GraalVM native images in Spring, but today, I am going to talk about the work I do on Kotlin/Wasm as a side project.
 
