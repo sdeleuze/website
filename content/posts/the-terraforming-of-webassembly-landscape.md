@@ -9,7 +9,7 @@ Last week, I took a few days off to go to Barcelona to attend [Wasm I/O](https:/
 
 ## WebAssembly Components
 
-While WebAssembly can already run everywhere and everything (including various [Operating Systems](https://copy.sh/v86/)), what is needed right now to reach the huge adoption it deserves, is to allow developers to use WebAssembly as a target to publish/consume their libraries and deploy their applications. Said otherwise, the WebAssembly community needs to specify and implement application-level standards that then will be used by the various programming language ecosystems.
+While WebAssembly can already run everywhere and everything (including various [Operating Systems](https://copy.sh/v86/) and [Wanix](https://wanix.sh/), a web-native Unix-like development environment), what is needed right now to reach the huge adoption it deserves, is to allow developers to use WebAssembly as a target to publish/consume their libraries and deploy their applications. Said otherwise, the WebAssembly community needs to specify and implement application-level standards that then will be used by the various programming language ecosystems.
 
 The first related building block is WebAssembly Components, which are portable, lightweight, finely-sandboxed, cross-language and compositional modules as described by Luke Wagner during his talk. In practice, those components will allow library developers to target all programming langages, not just a single one like today, with higher security and better performance.
 
