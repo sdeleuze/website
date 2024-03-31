@@ -51,6 +51,8 @@ For Java, the focus seems to be more an embeddability of Wasm code running withi
 
 It is also great to see [componentize-py](https://github.com/bytecodealliance/componentize-py) and [ComponentizeJS](https://github.com/bytecodealliance/ComponentizeJS) to ease interroperabilty respectively with Python or Javascript.
 
+Robin Brown shared an interesting presentation about [Claw](https://github.com/esoterra/claw-lang), a "Wasm Components native" language that has been designed for seemless interroperability and high performance when implementing/using components.
+
 Also notice that the debugging DevXP makes huge progresses thanks to related work by Microsoft, JetBrains and Google.
 
 ## Conclusion
