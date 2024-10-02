@@ -93,4 +93,4 @@ If you want to dig more into WASI, I highly recommend [Dan's Youtube channel](ht
 
 ## Follow up
 
-If you are interested in learning more about Kotlin/Wasm, come to the [Wasm I/O conference](https://wasmio.tech) where Zalim (the Kotlin/Wasm lead) and myself will present a talk introducing [Kotlin/Wasm](https://wasmio.tech/sessions/introducing-kotlin-wasm/). You can also follow me on [Twitter](https://twitter.com/sdeleuze) or [Mastodon](https://mastodon.online/@sdeleuze) for more news on WebAssembly and Kotlin, and [star the KoWasm repository on GitHub](https://github.com/sdeleuze/kowasm).
+If you are interested in learning more about Kotlin/Wasm, come to the [Wasm I/O conference](https://wasm.io) where Zalim (the Kotlin/Wasm lead) and myself will present a talk introducing Kotlin/Wasm. You can also follow me on [Twitter](https://twitter.com/sdeleuze) or [Mastodon](https://mastodon.online/@sdeleuze) for more news on WebAssembly and Kotlin, and [star the KoWasm repository on GitHub](https://github.com/sdeleuze/kowasm).

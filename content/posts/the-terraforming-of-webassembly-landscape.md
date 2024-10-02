@@ -5,7 +5,7 @@ date = "2024-03-26"
 tags = ["webassembly"]
 +++
 
-Last week, I took a few days off to go to Barcelona to attend [Wasm I/O](https://wasmio.tech/) 2024 conference. Like last year, the conference was amazing and was still more an event for companies and individuals building the Wasm ecosystem rather than using it, but my feeling is that we are approaching a point where the technology reaches the wider crowd of application and library developers. While WebAssembly can potentially be used with any language, any hardware, for any workload, I would like to share the trends and patterns I see in the ecosystem based on the various talks I saw and discussions I had at the conference.
+Last week, I took a few days off to go to Barcelona to attend [Wasm I/O](https://wasm.io/) 2024 conference. Like last year, the conference was amazing and was still more an event for companies and individuals building the Wasm ecosystem rather than using it, but my feeling is that we are approaching a point where the technology reaches the wider crowd of application and library developers. While WebAssembly can potentially be used with any language, any hardware, for any workload, I would like to share the trends and patterns I see in the ecosystem based on the various talks I saw and discussions I had at the conference.
 
 ## WebAssembly Components
 
