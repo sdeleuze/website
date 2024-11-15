@@ -43,13 +43,6 @@ pygmentscodefencesguesssyntax = true
   url = "https://github.com/sdeleuze"
   target="_blank"
 [[params.social]]
-  name = "Mastodon"
-  icon = "fa-brands fa-mastodon fa-2x"
-  weight = 3
-  url = "https://mastodon.online/@sdeleuze"
-  rel = "me"
-  target="_blank"
-[[params.social]]
   name = "Bluesky"
   icon = "fa-brands fa-bluesky fa-2x"
   weight = 3
@@ -57,10 +50,11 @@ pygmentscodefencesguesssyntax = true
   rel = "me"
   target="_blank"
 [[params.social]]
-  name = "X / Twitter"
-  icon = "fa-brands fa-x-twitter fa-2x"
+  name = "Mastodon"
+  icon = "fa-brands fa-mastodon fa-2x"
   weight = 3
-  url = "https://x.com/sdeleuze"
+  url = "https://mastodon.online/@sdeleuze"
+  rel = "me"
   target="_blank"
 [[params.social]]
   name = "Linkedin"
