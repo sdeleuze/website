@@ -1,7 +1,7 @@
 +++
 author = "Sébastien Deleuze"
 title = "Goodbye Spring Fu"
-date = "2025-12-8"
+date = "2025-12-08"
 tags = ["spring","kotlin"]
 +++
 
