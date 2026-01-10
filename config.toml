@@ -4,7 +4,8 @@ theme = "coder"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
-paginate = 20
+[pagination]
+  pagerSize = 20
 
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
@@ -71,7 +72,7 @@ pygmentscodefencesguesssyntax = true
   type = "application/rss+xml"
 
 [permalinks]
-  posts = "/:filename/"
+  posts = "/:contentbasename/"
 
 [[menu.main]]
 name = "Posts"
