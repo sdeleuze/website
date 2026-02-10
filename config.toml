@@ -12,7 +12,7 @@ pygmentscodefencesguesssyntax = true
 
 [params]
   author = "Sébastien Deleuze"
-  info = "Spring Framework core committer, WebAssembly since 2016."
+  info = "Spring AI/Framework @ Broadcom, WebAssembly since 2016."
   description = "Sébastien Deleuze's personal website"
   keywords = "blog,developer,spring,kotlin,webassembly"
   avatarurl = "images/profile.jpg"
